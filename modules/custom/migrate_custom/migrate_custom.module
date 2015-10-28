@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains migrate_custom.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function migrate_custom_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the migrate_custom module.
+    case 'help.page.migrate_custom':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Migrates drupal cafe D7 content to D8') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function migrate_custom_theme() {
+  $theme = [];
+
+  return $theme;
+}

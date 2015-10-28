@@ -1,0 +1,8 @@
+name: Migrate custom
+type: module
+description: Migrates drupal cafe D7 content to D8
+core: 8.x
+dependencies:
+  - migrate
+  - migrate_drupal
+package: Migrations
