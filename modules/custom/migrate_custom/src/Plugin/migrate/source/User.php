@@ -7,6 +7,7 @@
 namespace Drupal\migrate_custom\Plugin\migrate\source;
 
 use Drupal\migrate\Plugin\migrate\source\SqlBase;
+use Drupal\migrate\Row;
 
 /**
  * Extract users from Drupal 7 database.
@@ -24,6 +25,7 @@ class User extends SqlBase {
     return $this->select('dcf_users', 'dcf_u')
       ->fields('dcf_u', ['uid', 'status', 'created','access', 'login', 'name',
         'pass', 'mail', 'init', 'language']);
+    // ->condition('uid', 1, '>');
   }
 
   /**
@@ -44,6 +46,39 @@ class User extends SqlBase {
     ];
 
     return $fields;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow(Row $row) {
+    $uid = $row->getSourceProperty('uid');
+    // field_real_name
+    $result = $this->getDatabase()->query('
+      SELECT
+        fld.field_real_name_value
+      FROM
+        {dcf_field_data_field_real_name} fld
+      WHERE
+        fld.entity_id = :uid
+    ', array(':uid' => $uid));
+    foreach ($result as $record) {
+      $row->setSourceProperty('field_real_name', $record->field_real_name_value );
+    }
+
+    // field_availability
+    $result = $this->getDatabase()->query('
+      SELECT
+        fld.field_availability_value
+      FROM
+        {dcf_field_data_field_availability} fld
+      WHERE
+        fld.entity_id = :uid
+    ', array(':uid' => $uid));
+    foreach ($result as $record) {
+      $row->setSourceProperty('field_availability', $record->field_availability_value );
+    }
+    return parent::prepareRow($row);
   }
 
   /**

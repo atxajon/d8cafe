@@ -20,6 +20,8 @@ process:
   preferred_langcode: language
   preferred_admin_langcode: language
   init: init
+  field_real_name: field_real_name
+  field_availability: field_availability
   roles:
     plugin: migration
     migration: d7cafe_user_role
@@ -33,7 +35,7 @@ process:
 #      plugin: migration
 #      migration: d7_file
 
-# migration_dependencies:
+# migration_dependencies
 #   required:
 #     - d7_user_role
 #  optional:
