@@ -6,6 +6,7 @@ source:
   plugin: d7cafe_users
 destination:
   plugin: entity:user
+  md5_passwords: true
 process:
   uid: uid
   name: name

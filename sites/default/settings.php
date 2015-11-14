@@ -707,7 +707,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 #   include __DIR__ . '/settings.local.php';
 # }
 $databases['default']['default'] = array (
-  'database' => 'd8cafe',
+  'database' => 'd8',
   'username' => 'root',
   'password' => 'root',
   'prefix' => '',
@@ -716,5 +716,7 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+$databases['migrate']['default'] = array ('database' => 'd7cafe', 'username' => 'root', 'password' => 'root', 'host' => 'localhost', 'port' => '3306', 'driver' => 'mysql', 'prefix' => '',
+ );
 $settings['install_profile'] = 'standard';
 $config_directories['sync'] = 'sites/default/files/config_6wX-sZZCt0hYzyBFj_dXX2Lhlf9gz7nUrvr3NxD6oyOMiJoSKvJg0eO9JNiO0jvrJMdnXxU4OA/sync';
