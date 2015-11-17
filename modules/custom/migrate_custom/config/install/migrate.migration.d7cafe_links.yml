@@ -1,9 +1,9 @@
-id: d7cafe_articles
-label: Drupal Cafe 7 articles
+id: d7cafe_links
+label: Drupal Cafe 7 link nodes
 migration_tags:
   - Drupal 7
 source:
-  plugin: d7cafe_articles
+  plugin: d7cafe_links
 process:
   nid: nid
   vid: vid
@@ -30,7 +30,7 @@ process:
       4: full_html
   body/value: body_value
   body/summary: body_summary
-  field_tags: tags
+  field_links_tags: tags
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
