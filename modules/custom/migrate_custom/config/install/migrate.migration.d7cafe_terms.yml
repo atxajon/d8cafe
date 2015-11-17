@@ -1,0 +1,31 @@
+id: d7cafe_terms
+label: Drupal cafe 7 taxonomy terms
+dependencies:
+  enforced:
+    module:
+      - migrate_custom
+migration_groups:
+  - Drupal 7
+source:
+  plugin: d7cafe_terms
+process:
+  tid: tid
+  vid:
+    plugin: static_map
+    source: vid
+    map:
+      1: tags
+      2: content_types
+      3: user_types
+      4: newsletter
+  label: name
+  name: name
+  description: description
+  hierarchy: hierarchy
+  module: module
+  weight: weight
+destination:
+  plugin: entity:taxonomy_term
+migration_dependencies:
+  required:
+    - d7cafe_taxonomies

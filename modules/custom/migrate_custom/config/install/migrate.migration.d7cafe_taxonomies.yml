@@ -1,0 +1,24 @@
+id: d7cafe_taxonomies
+label: Drupal Cafe 7 taxonomy vocabularies
+migration_tags:
+  - Drupal 7
+source:
+  plugin: d7cafe_taxonomies
+process:
+  vid:
+    -
+      plugin: machine_name
+      source: machine_name
+    -
+      plugin: dedupe_entity
+      entity_type: taxonomy_vocabulary
+      field: vid
+      length: 32
+  label: name
+  name: name
+  description: description
+  hierarchy: hierarchy
+  module: module
+  weight: weight
+destination:
+  plugin: entity:taxonomy_vocabulary

@@ -92,6 +92,22 @@ class Article extends SqlBase {
 
     }
 
+    // taxonomy term IDs
+    // (here we use MySQL's GROUP_CONCAT() function to merge all values into one row.)
+    $result = $this->getDatabase()->query('
+      SELECT
+        GROUP_CONCAT(fld.field_tags_tid) as tids
+      FROM
+        {dcf_field_data_field_tags} fld
+      WHERE
+        fld.entity_id = :nid
+    ', array(':nid' => $nid));
+    foreach ($result as $record) {
+      if (!is_null($record->tids)) {
+        $row->setSourceProperty('tags', explode(',', $record->tids) );
+      }
+    }
+
     return parent::prepareRow($row);
   }
 
