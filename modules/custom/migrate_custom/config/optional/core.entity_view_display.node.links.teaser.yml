@@ -2,21 +2,24 @@ langcode: en
 status: true
 dependencies:
     config:
-        - field.field.node.links.body
+        - core.entity_view_mode.node.teaser
+#        - field.field.node.links.body
         - node.type.links
     module:
         - text
         - user
-id: node.links.default
+        - migrate_custom
+id: node.links.teaser
 targetEntityType: node
 bundle: links
-mode: default
+mode: teaser
 content:
     body:
         label: hidden
-        type: text_default
+        type: text_summary_or_trimmed
         weight: 101
-        settings: {  }
+        settings:
+            trim_length: 600
         third_party_settings: {  }
     links:
         weight: 100

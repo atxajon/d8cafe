@@ -2,24 +2,25 @@ langcode: en
 status: true
 dependencies:
     config:
-        - field.field.node.links.body
+#        - field.field.node.links.body
         - node.type.links
     module:
         - path
         - text
+        - migrate_custom
 id: node.links.default
 targetEntityType: node
 bundle: links
 mode: default
 content:
-    body:
-        type: text_textarea_with_summary
-        weight: 31
-        settings:
-            rows: 9
-            summary_rows: 3
-            placeholder: ''
-        third_party_settings: {  }
+#    body:
+#        type: text_textarea_with_summary
+#        weight: 31
+#        settings:
+#            rows: 9
+#            summary_rows: 3
+#            placeholder: ''
+#        third_party_settings: {  }
     created:
         type: datetime_timestamp
         weight: 10
