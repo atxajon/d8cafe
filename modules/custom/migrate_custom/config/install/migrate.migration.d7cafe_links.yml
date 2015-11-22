@@ -28,9 +28,8 @@ process:
       2: restricted_html
       3: full_html
       4: full_html
-  body/value: body_value
-  body/summary: body_summary
   field_links_tags: tags
+  field_url: field_url
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp

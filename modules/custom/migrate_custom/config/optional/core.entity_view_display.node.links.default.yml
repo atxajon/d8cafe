@@ -2,7 +2,8 @@ langcode: en
 status: true
 dependencies:
     config:
-#        - field.field.node.links.body
+        - field.field.node.links.field_links_tags
+        - field.field.node.links.field_url
         - node.type.links
     module:
         - text
@@ -13,12 +14,26 @@ targetEntityType: node
 bundle: links
 mode: default
 content:
-    body:
-        label: hidden
-        type: text_default
-        weight: 101
-        settings: {  }
-        third_party_settings: {  }
-    links:
-        weight: 100
+  field_links_tags:
+    weight: 11
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_url:
+    weight: 5
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
