@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_short_bio
+    - node.type.member
+id: node.member.field_short_bio
+field_name: field_short_bio
+entity_type: node
+bundle: member
+label: 'Short bio'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

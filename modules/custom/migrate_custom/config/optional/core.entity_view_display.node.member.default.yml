@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.member.field_linkedin_url
+    - field.field.node.member.field_member_image
+    - field.field.node.member.field_short_bio
+    - node.type.member
+  module:
+    - image
+    - link
+    - user
+id: node.member.default
+targetEntityType: node
+bundle: member
+mode: default
+content:
+  field_linkedin_url:
+    weight: 102
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_member_image:
+    weight: 103
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_short_bio:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  links:
+    weight: 100
+hidden: {  }
