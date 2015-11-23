@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Contains \Drupal\migrate_custom\Plugin\migrate\source\Article.
+ * Contains \Drupal\migrate_custom\Plugin\migrate\source\Link.
  */
 
 namespace Drupal\migrate_custom\Plugin\migrate\source;
@@ -10,7 +10,7 @@ use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Row;
 
 /**
- * Extract articles from Drupal 7 database.
+ * Extract links from Drupal 7 database.
  *
  * @MigrateSource(
  *   id = "d7cafe_links"
@@ -89,10 +89,25 @@ class Link extends SqlBase {
       }
     }
 
+    // field_url
+    $result = $this->getDatabase()->query('
+      SELECT
+        fld.field_url_url as url,
+        fld.field_url_title as title
+      FROM
+        {dcf_field_data_field_url} fld
+      WHERE
+        fld.entity_id = :nid
+    ', array(':nid' => $nid));
+    foreach ($result as $record) {
+      $row->setSourceProperty('field_url_url', $record->url);
+      $row->setSourceProperty('field_url_title', $record->title);
+    }
+
     return parent::prepareRow($row);
   }
 
-    /**
+  /**
    * {@inheritdoc}
    */
   public function getIds() {

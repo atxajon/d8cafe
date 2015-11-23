@@ -29,7 +29,8 @@ process:
       3: full_html
       4: full_html
   field_links_tags: tags
-  field_url: field_url
+  field_url: field_url_url
+  field_url_title: field_url_title
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
