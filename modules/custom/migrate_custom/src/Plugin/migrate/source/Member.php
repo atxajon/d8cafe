@@ -87,17 +87,31 @@ class Member extends SqlBase {
     }
 
     // field_image
-//    $result = $this->getDatabase()->query('
-//      SELECT
-//        fld.field_image_fid as img
-//      FROM
-//        {dcf_field_data_field_image} fld
-//      WHERE
-//        fld.entity_id = :nid
-//    ', array(':nid' => $nid));
-//    foreach ($result as $record) {
-//      $row->setSourceProperty('field_image', $record->img);
-//    }
+    $result = $this->getDatabase()->query('
+      SELECT
+        fld.field_image_fid,
+        fld.field_image_alt,
+        fld.field_image_title,
+        fld.field_image_width,
+        fld.field_image_height
+      FROM
+        {dcf_field_data_field_image} fld
+      WHERE
+        fld.entity_id = :nid
+    ', array(':nid' => $nid));
+    // Create an associative array for each row in the result. The keys
+    // here match the last part of the column name in the field table.
+    $images = [];
+    foreach ($result as $record) {
+      $images[] = [
+        'target_id' => $record->field_image_fid,
+        'alt' => $record->field_image_alt,
+        'title' => $record->field_image_title,
+        'width' => $record->field_image_width,
+        'height' => $record->field_image_height,
+      ];
+    }
+    $row->setSourceProperty('field_image', $images);
 
     // field_linkedin_url
     $result = $this->getDatabase()->query('
