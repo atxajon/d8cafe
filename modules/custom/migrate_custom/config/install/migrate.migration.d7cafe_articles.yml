@@ -34,7 +34,6 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
-  alias: alias
 destination:
   plugin: entity:node
 migration_dependencies:

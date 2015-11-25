@@ -56,23 +56,6 @@ class Link extends SqlBase {
   public function prepareRow(Row $row) {
     $nid = $row->getSourceProperty('nid');
 
-
-    // url alias
-    $result = $this->getDatabase()->query('
-      SELECT
-        ua.alias
-      FROM
-        {dcf_url_alias} ua
-      WHERE
-        ua.source = :nid
-    ', array(':nid' => 'node/'.$nid));
-    foreach ($result as $record) {
-      $row->setSourceProperty('alias', $record->alias);
-      // returns the right alias, but TODO: fix destination, as it's not inserting into url_alias table
-      //  drush_print_r($record);
-
-    }
-
     // taxonomy term IDs
     // (here we use MySQL's GROUP_CONCAT() function to merge all values into one row.)
     $result = $this->getDatabase()->query('
